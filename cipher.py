@@ -1,7 +1,7 @@
-def caesar_cipher(text, shift, mode='encrypt'):
+def caesar_cipher(text, shift, mode):
     result = ""
     
-    if mode == 'decrypt':
+    if mode == 2:
         shift = -shift 
     
     for char in text:
@@ -11,14 +11,19 @@ def caesar_cipher(text, shift, mode='encrypt'):
         else:
             result += char 
     
+    if mode == 1:
+        print("Encrypted message:")
+    else:
+        print("Decrypted message:")
+
     return result
 
-message = "HELLO WORLD"
-shift_value = 3
+print("Welcome to Caesar Cipher!")
 
-encrypted = caesar_cipher(message, shift_value, mode='encrypt')
-decrypted = caesar_cipher(encrypted, shift_value, mode='decrypt')
+mode = int(input("Choose mode:\n1. Encrypt\n2. Decrypt\n> "))
+message = input("Enter your message:\n> ")
+shift = int(input("Enter shift value:\n> "))
 
-print(f"Original:  {message}")
-print(f"Encrypted: {encrypted}")
-print(f"Decrypted: {decrypted}")
+result = caesar_cipher(message, shift, mode)
+
+print("> ", result)
